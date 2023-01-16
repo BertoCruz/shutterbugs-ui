@@ -1,0 +1,87 @@
+/* PHOTO CARD */
+.photographer-card {
+  background: var(--clr-card);
+  border-radius: 10px;
+  box-sizing: border-box;
+  /* box-shadow: var(--clr-card-box-shadow); */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 15%), 0 2px 2px hsl(0deg 0% 0% / 15%),
+    0 4px 4px hsl(0deg 0% 0% / 15%), 0 8px 8px hsl(0deg 0% 0% / 15%),
+    0 16px 16px hsl(0deg 0% 0% / 15%);
+  margin: 20px;
+  max-height: 35rem;
+  max-width: 30rem;
+  /* outline: 1px solid red; */
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+}
+
+/* PHOTOGRAPHER'S PHOTO */
+.card-photo-container {
+  border: 5px;
+  border-radius: 11px;
+  height: 15.8rem;
+  /* outline: 1px solid orange; */
+  overflow: hidden;
+  width: 28.65rem;
+}
+
+.card-photo-container img {
+  /* height: auto; */
+  inline-size: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+/* DESCRIPTION OF PHOTOGRAPHER */
+.card-description-container {
+  /* outline: 1px solid greenyellow; */
+  height: 10rem;
+  overflow: hidden;
+}
+
+/* NAME AND FAVORITES ICON */
+.name-and-favorites-container {
+  display: flex;
+  /* border: 1px solid grey; */
+  justify-content: space-between;
+}
+
+.name-and-favorites-container h3 {
+  margin: 1rem 0 0.5rem 0;
+}
+
+.card-star-wrapper {
+  height: 1.5rem;
+  margin: 1rem 0 0.5rem 1rem;
+  /* outline: 1px solid red; */
+  width: 1.5rem;
+}
+
+.card-star-wrapper img {
+  height: auto;
+  inline-size: 100%;
+}
+
+/* BASIC BACKGROUND INFO */
+
+.card-background-bio {
+  /* border: 1px solid greenyellow; */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.card-background-bio span {
+  margin: 0 1rem 0 0rem;
+}
+
+.card-background-bio:after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 50%;
+  bottom: 0px;
+  background: var(--clr-card-background-bio);
+  pointer-events: none;
+}

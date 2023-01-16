@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Chivo', sans-serif;
+}
+
+:root {
+  --clr-main-background: rgb(241, 239, 233);
+  --clr-card: rgb(220, 216, 206);
+  --clr-card-background-bio: linear-gradient(
+    180deg,
+    rgba(139, 167, 32, 0) 50%,
+    rgba(220, 216, 206, 1) 90%
+  );
+  /* --clr-card-box-shadow: 0 5px 20px -4px rgb(0 0 0 / 15%); */
+  --clr-card-box-shadow: 0 1px 1px rgba(0, 0, 0, 15%), 0 2px 2px hsl(0deg 0% 0% / 15%),
+    0 4px 4px hsl(0deg 0% 0% / 15%), 0 8px 8px hsl(0deg 0% 0% / 15%),
+    0 16px 16px hsl(0deg 0% 0% / 15%);
+  --clr-details-section: rgb(231, 229, 221);
+  --clr-footer: rgb(220, 216, 206);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  height: 90vh;
+  margin: 0;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
