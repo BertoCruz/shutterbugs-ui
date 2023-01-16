@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAllPhotographers } from '../../api-calls';
 import './App.css';
 import Photographers from '../Photographers/Photographers';
+import NavBar from '../NavBar/NavBar';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
+      {/* <Hero /> */}
       <Photographers photographers={photographers}/>
     </div>
   );

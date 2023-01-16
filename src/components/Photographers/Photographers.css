@@ -52,12 +52,14 @@
 
 .add-new-photographer {
     background: var(--clr-card);
+    border-radius: 10px;
     border: .5px;
     cursor: pointer;
     font-family : inherit;
-    font-weight: 100;
     font-size: 1.3rem;
+    font-weight: 100;
     height: 2rem;
+    width: 17rem;
 }
 
 /* ALL PHOTOGRAPHERS */
