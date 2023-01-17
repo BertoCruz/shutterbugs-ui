@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './NavBar.css';
-import logo from '../../images/ShutterbugsLogo.png';
+import logo from '../../assets/images/ShutterbugsLogo.png';
 import { NavLink } from 'react-router-dom';
 
 function NavBar() {

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import "./Hero.css"
-import emptyStar from '../../images/empty-star.png';
-import filledStar from '../../images/filled-star.png';
+import emptyStar from '../../assets/images/empty-star.png';
+import filledStar from '../../assets/images/filled-star.png';
 
 function Hero({recentEntry}) {
     // const [heroObject, setHeroObject] = useState(recentEntry);

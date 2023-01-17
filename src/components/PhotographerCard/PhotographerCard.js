@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './PhotographerCard.css';
-import emptyStar from '../../images/empty-star.png';
-import filledStar from '../../images/filled-star.png';
+import emptyStar from '../../assets/images/empty-star.png';
+import filledStar from '../../assets/images/filled-star.png';
 
 function PhotographerCard({ id, isFavorite, photo, name, from, born, death, bio }) {
   // console.log(name);

@@ -1,0 +1,36 @@
+.form-container {
+    align-items: center;
+    /* border: 1px solid red; */
+    background: var(--clr-card);
+    box-shadow: var(--clr-card-box-shadow);
+    display: flex;
+    /* flex-direction: column; */
+    min-height: 40rem;
+    justify-content: center;
+    width: 70rem;
+}
+
+form h2 {
+    outline: 1px solid red;
+}
+
+.form-photo-inputs {
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid magenta;
+    width: 20rem;
+}
+
+.form-photo-url {
+    border: none;
+    border-radius: 10px;
+    width: 10rem;
+
+}
+
+/* .form-photo-description {
+    border: none;
+    border-radius: 10px;
+    height: 5rem;
+    width: 100%;
+} */
