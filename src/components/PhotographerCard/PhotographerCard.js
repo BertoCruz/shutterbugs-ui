@@ -6,8 +6,8 @@ import emptyStar from '../../images/empty-star.png';
 import filledStar from '../../images/filled-star.png';
 
 function PhotographerCard({ id, isFavorite, photo, name, from, born, death, bio }) {
-  console.log(name);
-  console.log(death);
+  // console.log(name);
+  // console.log(death);
   return (
     <NavLink to={`/${id}`}>
       <section className="photographer-card">

@@ -1,0 +1,91 @@
+.hero-component {
+  align-items: center;
+  /* border: 1px solid gold; */
+  display: flex;
+  height: 40rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-container {
+  background: var(--clr-card);
+  /* border: 1px solid red; */
+  border-radius: 5px;
+  box-shadow: var(--clr-card-box-shadow);
+  display: flex;
+  height: 35rem;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 10px;
+  /* width: 80%; */
+  max-width: 95rem;
+}
+
+.hero-photo-container {
+  /* border-radius: 10px; */
+  height: 33rem;
+  margin: 0.3rem 0 0 0.3rem;
+  /* outline: 1px solid red; */
+  overflow: hidden;
+  width: 65%;
+}
+
+.hero-photo-container img {
+  /* height: auto; */
+  inline-size: 100%;
+  object-fit: cover;
+  /* aspect-ratio: 16 / 9; */
+}
+
+.hero-description-container {
+  height: 98%;
+  /* outline: 1px solid violet; */
+  overflow-y: scroll;
+  margin: 0.3rem 0.3rem 0 0;
+  width: 32%;
+}
+
+.hero-description-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.hero-name-and-favorites-container {
+  display: flex;
+  /* border: 1px solid grey; */
+  justify-content: space-between;
+  margin: 1.5rem 0 1.5rem 0;
+  width: 100%;
+}
+
+.hero-name-and-favorites-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  /* outline: 1px solid gold; */
+}
+
+.hero-name-and-favorites-container h2 {
+  font-size: 2.1rem;
+  /* margin: 1rem 0 0.5rem 0; */
+  margin: 0;
+}
+
+.hero-star-wrapper {
+  height: 1.7rem;
+  /* margin: 1rem 0 0.5rem 1rem; */
+  margin: 0.1rem 0 0 0.6rem;
+  /* outline: 1px solid red; */
+  width: 1.7rem;
+}
+
+.hero-star-wrapper img {
+  height: auto;
+  inline-size: 100%;
+}
+
+.hero-background-bio {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3rem;
+}

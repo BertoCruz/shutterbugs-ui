@@ -1,12 +1,9 @@
 /* PHOTO CARD */
 .photographer-card {
   background: var(--clr-card);
-  border-radius: 10px;
+  border-radius: 5px;
   box-sizing: border-box;
-  /* box-shadow: var(--clr-card-box-shadow); */
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 15%), 0 2px 2px hsl(0deg 0% 0% / 15%),
-    0 4px 4px hsl(0deg 0% 0% / 15%), 0 8px 8px hsl(0deg 0% 0% / 15%),
-    0 16px 16px hsl(0deg 0% 0% / 15%);
+  box-shadow: var(--clr-card-box-shadow);
   margin: 20px;
   max-height: 35rem;
   max-width: 30rem;
@@ -19,7 +16,7 @@
 /* PHOTOGRAPHER'S PHOTO */
 .card-photo-container {
   border: 5px;
-  border-radius: 11px;
+  /* border-radius: 11px; */
   height: 15.8rem;
   /* outline: 1px solid orange; */
   overflow: hidden;

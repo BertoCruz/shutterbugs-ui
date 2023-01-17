@@ -4,3 +4,18 @@
   height: 100%;
   width: 100%;
 }
+
+main {
+  /* border: 1px solid red; */
+  padding-top: 8rem;
+  width: 100%;
+}
+
+.loading-hero{
+  align-items: center;
+  /* border: 1px solid gold; */
+  display: flex;
+  height: 40rem;
+  justify-content: center;
+  width: 100%;
+}
