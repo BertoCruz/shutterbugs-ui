@@ -8,7 +8,7 @@ import Photographers from '../Photographers/Photographers';
 import NavBar from '../NavBar/NavBar';
 import Hero from '../Hero/Hero';
 import Form from '../Form/Form';
-import PhotographerDetails from "../PhotographerDetails/PhotographerDetails"
+import PhotographerDetails from '../PhotographerDetails/PhotographerDetails';
 import Footer from '../Footer/Footer';
 
 function App() {
@@ -54,10 +54,11 @@ function App() {
       <main>
         {!photographers.length && !error && <DotLoader color="#010101" size={150} />}
         {error && !photographers.length && (
-          <div className='error-handle-animation'>
+          <div className="error-handle-animation">
             <FadeLoader color="#010101" height={20} width={5} />
             ERROR Please refresh the page and try again...
-            <br/>If this persist, please try again later
+            <br />
+            If this persist, please try again later
           </div>
         )}
         {photographers.length > 0 && (
@@ -74,7 +75,26 @@ function App() {
             <Route
               path="/:id"
               render={({ match }) => {
-                return <PhotographerDetails id={match.params.id} />;
+                const shallow = photographers.splice()
+                const singlePhotographer = shallow.find(
+                  (item) => item.id === match.params.id
+                );
+                console.log("HURRRRRRR", singlePhotographer)
+                // return <PhotographerDetails id={match.params.id} />;
+                return (
+                  <PhotographerDetails
+                    id={singlePhotographer.id}
+                    name={singlePhotographer.name}
+                    isFavorite={singlePhotographer.is_favorite}
+                    birthYear={singlePhotographer.birth_year}
+                    deathYear={singlePhotographer.death_year}
+                    countryOrigin={singlePhotographer.country_of_origin}
+                    based={singlePhotographer.based}
+                    groupAffiliations={singlePhotographer.group_affiliations}
+                    bio={singlePhotographer.bio}
+                    userNotes={singlePhotographer.user_notes}
+                  />
+                );
               }}
             />
           </Switch>
