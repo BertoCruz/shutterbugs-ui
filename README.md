@@ -18,6 +18,9 @@ Are you just starting off as a photographer, or researching different styles of 
 
 
 ## Screenshots 
+![Home Page View](https://github.com/BertoCruz/shutterbugs-ui/blob/main/src/assets/images/Screen%20Shot-HomePage.png)
+![Photographer Cards and card navigation](https://github.com/BertoCruz/shutterbugs-ui/blob/main/src/assets/images/Screen%20Shot%20-cards%20and%20Navigation.png)
+![Controlled Form for new submission](https://github.com/BertoCruz/shutterbugs-ui/blob/main/src/assets/images/Screen%20Shot-Controlled%20Form.png)
 
 ## Possible Future Extensions
 - As a user, I should be taken to a details page when I click on a photographer card. Here I should be able to edit my own journal entries as well as the pictures I submitted
