@@ -5,14 +5,14 @@ import './PhotographerCard.css';
 import emptyStar from '../../assets/images/empty-star.png';
 import filledStar from '../../assets/images/filled-star.png';
 
-function PhotographerCard({ id, isFavorite, photo, name, from, born, death, bio }) {
+function PhotographerCard({ id, isFavorite, photo, photoDescription, name, from, born, death, bio }) {
   // console.log(name);
   // console.log(death);
   return (
     <NavLink to={`/${id}`}>
       <section className="photographer-card">
         <div className="card-photo-container">
-          <img src={photo} alt={`Photo taken by ${name}`}></img>
+          <img src={photo} alt={`Photo taken by ${name}`} title={photoDescription}></img>
         </div>
         <div className="card-description-container">
           <div className='name-and-favorites-container'>
@@ -39,6 +39,7 @@ PhotographerCard.propTypes = {
   id: PropTypes.number,
   isFavorite: PropTypes.bool,
   photo: PropTypes.string,
+  photoDescription: PropTypes.string,
   name: PropTypes.string,
   from: PropTypes.string,
   born: PropTypes.number,
