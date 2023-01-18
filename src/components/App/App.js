@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getAllPhotographers } from '../../api-calls';
+import { getAllPhotographers, sendNewPhotographer } from '../../api-calls';
 import { Route, Switch } from 'react-router-dom';
 import DotLoader from 'react-spinners/DotLoader';
+import FadeLoader from 'react-spinners/FadeLoader';
 import './App.css';
 import Photographers from '../Photographers/Photographers';
 import NavBar from '../NavBar/NavBar';
@@ -16,9 +17,19 @@ function App() {
   // const [isLoading, setIsLoading] = useState(true);
   // const [showFavorites, setShowFavorites] =
 
-  // submitNewPhotographer = newPhotographer => {
-
-  // }
+  const submitNewPhotographer = async (newPhotographer) => {
+    try {
+      const data = await sendNewPhotographer(newPhotographer);
+      setPhotographers((prevState) => {
+        return [...prevState, data];
+      });
+      return true;
+    } catch (err) {
+      console.log('The ERROR====', err);
+      setError(err);
+      return false;
+    }
+  };
 
   useEffect(() => {
     const fetchAllPhotographers = async () => {
@@ -36,13 +47,19 @@ function App() {
     fetchAllPhotographers();
   }, []);
 
-  console.log('HERE=====', photographers.length);
+  // console.log('HERE=====', photographers.length);
   return (
     <div className="App">
       <NavBar />
       <main>
         {!photographers.length && !error && <DotLoader color="#010101" size={150} />}
-        {error && <div>ERROR</div>}
+        {error && !photographers.length && (
+          <div className='error-handle-animation'>
+            <FadeLoader color="#010101" height={20} width={5} />
+            ERROR Please refresh the page and try again...
+            <br/>If this persist, please try again later
+          </div>
+        )}
         {photographers.length > 0 && (
           <Switch>
             <Route exact path="/">
@@ -51,7 +68,7 @@ function App() {
             </Route>
 
             <Route path="/form">
-              <Form />
+              <Form submitNewPhotographer={submitNewPhotographer} />
             </Route>
 
             {/* <Route
