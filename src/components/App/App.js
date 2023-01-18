@@ -14,8 +14,6 @@ import Footer from '../Footer/Footer';
 function App() {
   const [photographers, setPhotographers] = useState([]);
   const [error, setError] = useState('');
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [showFavorites, setShowFavorites] =
 
   const submitNewPhotographer = async (newPhotographer) => {
     try {
@@ -25,7 +23,6 @@ function App() {
       });
       return true;
     } catch (err) {
-      console.log('The ERROR====', err);
       setError(err);
       return false;
     }
@@ -35,10 +32,7 @@ function App() {
     const fetchAllPhotographers = async () => {
       try {
         const data = await getAllPhotographers();
-        // console.log(data);
-        // setTimeout(8000)
         setPhotographers(data);
-        // setIsLoading(false);
       } catch (err) {
         setError(err);
       }
@@ -47,7 +41,6 @@ function App() {
     fetchAllPhotographers();
   }, []);
 
-  // console.log('HERE=====', photographers.length);
   return (
     <div className="App">
       <NavBar />

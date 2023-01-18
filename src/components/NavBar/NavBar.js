@@ -18,13 +18,13 @@ function NavBar() {
   return (
     <header className={color ? "header header-background" : "header"}>
       <div className="logo-wrapper">
-        <NavLink to="/" className="nav-link">
+        <NavLink to="/" className="logo-nav-link">
           <img src={logo} alt="Shutterbugs Logo" />
         </NavLink>
       </div>
       <nav className="navbar">
         <ul>
-          <NavLink to="/about" className="nav-link">
+          <NavLink to="/about" className="about-nav-link">
             <li>About</li>
           </NavLink>
         </ul>
