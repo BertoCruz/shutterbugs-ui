@@ -1,0 +1,198 @@
+.form-container {
+  align-items: center;
+  /* border: 1px solid red; */
+  background: var(--clr-card);
+  box-shadow: var(--clr-card-box-shadow);
+  display: flex;
+  /* flex-direction: column; */
+  margin-bottom: 4rem;
+  min-height: 40rem;
+  /* height: 65%; */
+  padding: 1rem;
+  justify-content: space-around;
+  width: 70rem;
+}
+
+form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 38.3rem;
+  /* outline: 1px solid magenta; */
+  padding: 1rem;
+  width: 42rem;
+}
+
+form h2 {
+  font-size: 2rem;
+  /* outline: 1px solid red; */
+  width: 100%;
+}
+
+.form-directions {
+    font-size: .75rem;
+    margin: 0 0 .5rem 0;
+}
+
+form input {
+  /* border: 1px solid #010101; */
+  /* border: none; */
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+form textarea {
+  /* border: 1px solid #010101; */
+  /* border: none; */
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 0.6rem;
+  resize: vertical;
+  width: 100%;
+}
+
+form button {
+  border: 1px solid #01010162;
+  border-radius: 10px;
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem;
+}
+
+.form-photo-inputs {
+  border: 1px solid #010101;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: .7rem 0 .7rem 0;
+  padding: .5rem;
+  position: relative;
+  /* margin-top: 0.4rem; */
+  /* outline: 1px solid magenta; */
+  width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-photo-url {
+  /* margin: 0.5rem 0 0 0; */
+  margin: 0 0 0.25rem 0;
+}
+
+.form-textarea-bio {
+  height: 7rem;
+}
+
+.form-photo-description {
+  height: 3.5rem;
+  margin: 0.25rem 0 0 0;
+}
+
+/* .add-new-photo-btn {
+    
+} */
+
+.form-row-1,
+.form-row-2 {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+input[name='name'] {
+  width: 46%;
+}
+
+input[name='birthYear'] {
+  width: 20%;
+}
+
+input[name='deathYear'] {
+  width: 32%;
+}
+
+input[name='countryOrigin'] {
+  width: 48.5%;
+}
+
+input[name='based'] {
+  width: 48.5%;
+}
+
+.submit-button-container {
+    align-items:flex-end;
+  display: flex;
+  justify-content:space-between;
+  width: 100%;
+}
+
+.error-span {
+    color: red;
+    font-size: 1rem;
+    margin: 0 0 .5rem .5rem;
+}
+
+.success-span {
+    font-size: 1rem;
+    margin: 0 0 .5rem .5rem;
+}
+
+
+.border-reset {
+    border: none;
+}
+
+.requiredField {
+    border: 1px solid red;
+}
+
+.submit-button {
+  margin-top: 1rem;
+  font-size: 1rem;
+  width: 6rem;
+}
+
+/* PORTRAIT FOR FORM */
+
+.form-self-portrait-wrapper {
+  /* min-height: 38rem; */
+  /* max-height: 38.5rem; */
+  box-shadow: var(--clr-light-box-shadow);
+  height: 38.3rem;
+  /* outline: 1px solid cornflowerblue; */
+  overflow: hidden;
+  width: 25rem;
+}
+
+.form-self-portrait-wrapper img {
+  height: auto;
+  inline-size: 100%;
+  margin-top: -0.8rem;
+  object-fit: cover;
+  aspect-ratio: 0.9 / 1.45;
+}
+
+.delete-photo {
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    top: -1.9rem;
+    right: -.8rem;
+}
+
+.delete-photo button {
+    background : url("../../assets/images/red-x-icon.png") no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    inline-size: 100%;
+}
