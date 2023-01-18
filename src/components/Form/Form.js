@@ -22,30 +22,43 @@ function Form() {
   const [bio, setBio] = useState('');
   const [photos, setPhotos] = useState(inputTags);
   const [randomPortrait, setRandomPortrait] = useState({});
+  const [required, setRequired] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const inputsToDisplay = photos.map((photoObj, index) => {
     return (
       <div className="form-photo-inputs" id={index} key={index}>
-        <div className={photos.length > 1 ? ("delete-photo") : ("delete-photo hidden")}>
-          <button onClick={event => deletePhotoEntry(event, index)}/>
+        <div className={photos.length > 1 ? 'delete-photo' : 'delete-photo hidden'}>
+          <button onClick={(event) => deletePhotoEntry(event, index)} />
         </div>
         <input
-          className="form-photo-url"
+          className={
+            required && photos[index]['photo_path'].length === 0 && photos.length <= 1
+              ? 'form-photo-url requiredField'
+              : 'form-photo-url border-reset'
+          }
           id={index}
           name="photo_path"
           onChange={(event) => handlePhotoInputChange(event)}
           placeholder="Paste image URL"
           type="text"
-          value={photoObj['photo_path']}
+          value={photos[index]['photo_path']}
+          // value={photoObj['photo_path']}
         />
         <textarea
-          className="form-photo-description"
+          // className="form-photo-description"
+          className={
+            required && photos[index].description.length === 0 && photos.length <= 1
+              ? 'form-photo-description requiredField'
+              : 'form-photo-description border-reset'
+          }
           id={index}
           name="description"
           onChange={(event) => handlePhotoInputChange(event)}
           placeholder="Write the title description, including name and date, of this photo here..."
           type="text"
-          value={photoObj.description}
+          value={photos[index].description}
+          // value={photoObj.description}
         />
       </div>
     );
@@ -76,19 +89,43 @@ function Form() {
       ];
     });
   };
-  
+
   const deletePhotoEntry = (event, id) => {
     event.preventDefault();
     setPhotos((prevState) => {
-      const newPhotos = prevState.filter((p, i) => i !== id)
-      console.log("OVERRRR HURRR----", newPhotos);
-      return newPhotos
-    })
-  }
+      const newPhotos = prevState.filter((p, i) => i !== id);
+      // console.log('OVERRRR HURRR----', newPhotos);
+      return newPhotos;
+    });
+  };
+
+  const formValidate = () => {
+    if (
+      !name ||
+      !birthYear ||
+      !deathYear ||
+      !countryOrigin ||
+      !based ||
+      !groupAffiliations ||
+      !bio ||
+      !photos[0].description ||
+      !photos[0]['photo_path']
+    ) {
+      return false;
+    }
+    return true;
+  };
 
   const handlePhotographerSubmit = (event) => {
     event.preventDefault();
-    console.log('click');
+    const validated = formValidate();
+
+    if (validated) {
+      console.log('click');
+      setSubmitted(true);
+    } else {
+      setRequired(true);
+    }
   };
 
   const clearInput = () => {
@@ -118,6 +155,7 @@ function Form() {
         <h2>Photographer Entry</h2>
         <div className="form-row-1">
           <input
+            className={required && name.length === 0 ? 'requiredField' : 'border-reset'}
             name="name"
             onChange={(event) => setName(event.target.value)}
             placeholder="Name..."
@@ -125,6 +163,7 @@ function Form() {
             value={name}
           />
           <input
+            className={required && birthYear.length === 0 ? 'requiredField' : 'border-reset'}
             name="birthYear"
             onChange={(event) => setBirthYear(event.target.value)}
             placeholder="Birth Year..."
@@ -132,6 +171,7 @@ function Form() {
             value={birthYear}
           />
           <input
+            className={required && deathYear.length === 0 ? 'requiredField' : 'border-reset'}
             name="deathYear"
             onChange={(event) => setDeathYear(event.target.value)}
             placeholder="Year of death, or type 'alive'"
@@ -141,6 +181,7 @@ function Form() {
         </div>
         <div className="form-row-2">
           <input
+            className={required && countryOrigin.length === 0 ? 'requiredField' : 'border-reset'}
             name="countryOrigin"
             onChange={(event) => setCountryOrigin(event.target.value)}
             placeholder="Country of origin..."
@@ -148,6 +189,7 @@ function Form() {
             value={countryOrigin}
           />
           <input
+            className={required && based.length === 0 ? 'requiredField' : 'border-reset'}
             name="based"
             onChange={(event) => setBased(event.target.value)}
             placeholder="What country are they based out of?"
@@ -156,6 +198,7 @@ function Form() {
           />
         </div>
         <input
+          className={required && groupAffiliations.length === 0 ? 'requiredField' : 'border-reset'}
           name="groupAffiliations"
           onChange={(event) => setGroupAffiliations(event.target.value)}
           placeholder="Group affiliations"
@@ -163,7 +206,11 @@ function Form() {
           value={groupAffiliations}
         />
         <textarea
-          className="form-textarea-bio"
+          className={
+            required && bio.length === 0
+              ? 'form-textarea-bio requiredField'
+              : 'form-textarea-bio border-reset'
+          }
           name="bio"
           onChange={(event) => setBio(event.target.value)}
           placeholder="Write photographers' bio here..."
@@ -175,6 +222,18 @@ function Form() {
         </button>
         {inputsToDisplay}
         <div className="submit-button-container">
+          {required ? (
+            <span className="error-span">* Please fill out the required fields, then submit</span>
+          ) : (
+            <span />
+          )}
+          {submitted ? (
+            <span className="success-span">
+              📸 Successfully submitted, please navigate to home page
+            </span>
+          ) : (
+            <span />
+          )}
           <button className="submit-button" onClick={(event) => handlePhotographerSubmit(event)}>
             Submit
           </button>
