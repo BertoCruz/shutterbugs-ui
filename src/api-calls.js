@@ -1,58 +1,58 @@
 export const getAllPhotographers = async () => {
-    const url = `http://localhost:3001/api/v1/photographers`;
-    const response = await fetch(url)
-    if(!response.ok) {
-        throw new Error('Unable to retrieve photographers');
-    }
+  const url = `http://localhost:3001/api/v1/photographers`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Unable to retrieve photographers');
+  }
 
-    const data = await response.json();
-    return data;
-}
+  const data = await response.json();
+  return data;
+};
 
-export const getPhotographer = async userId => {
-    const url = `http://localhost:3001/api/v1/photographers/${userId}`
-    const response = await fetch(url)
-    if (!response.ok) {
-        throw new Error(`Unable to locate photographer id# ${userId}`);
-    }
-    
-    const data = await response.json();
-    return data;
-}
+export const getPhotographer = async (userId) => {
+  const url = `http://localhost:3001/api/v1/photographers/${userId}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Unable to locate photographer id# ${userId}`);
+  }
 
-export const sendNewPhotographer = async submittedPhotographer => {
-    const url = `http://localhost:3001/api/v1/photographers`
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(submittedPhotographer),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
+  const data = await response.json();
+  return data;
+};
 
-    const response = await fetch(url, options);
+export const sendNewPhotographer = async (submittedPhotographer) => {
+  const url = `http://localhost:3001/api/v1/photographers`;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(submittedPhotographer),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
-    if (!response.ok) {
-        const { message: errorMessage } = await response.json();
-        throw new Error(errorMessage)
-    }
+  const response = await fetch(url, options);
 
-    const data = await response.json();
-    return data;
-}
+  if (!response.ok) {
+    const { message: errorMessage } = await response.json();
+    throw new Error(errorMessage);
+  }
 
-export const deletePhotographer = async userId => {
-    const url = `http://localhost:3001/api/v1/photographers/${userId}`
-    const options = {
-        method: 'DELETE'
-    }
+  const data = await response.json();
+  return data;
+};
 
-    const response = await fetch(url, options);
+export const deletePhotographer = async (userId) => {
+  const url = `http://localhost:3001/api/v1/photographers/${userId}`;
+  const options = {
+    method: 'DELETE',
+  };
 
-    if (!response.ok) {
-        throw new Error(`Unable to delete user id# ${userId}`);
-    }
+  const response = await fetch(url, options);
 
-    const data = await response.json();
-    return data;
-}
+  if (!response.ok) {
+    throw new Error(`Unable to delete user id# ${userId}`);
+  }
+
+  const data = await response.json();
+  return data;
+};

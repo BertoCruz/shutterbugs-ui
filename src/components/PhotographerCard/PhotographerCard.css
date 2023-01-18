@@ -55,10 +55,13 @@
   width: 1.5rem;
 }
 
-.card-star-wrapper img {
-  height: auto;
+/* .card-star-wrapper button {
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  height: 100%;
   inline-size: 100%;
-}
+} */
 
 /* BASIC BACKGROUND INFO */
 

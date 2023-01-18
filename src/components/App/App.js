@@ -8,7 +8,7 @@ import Photographers from '../Photographers/Photographers';
 import NavBar from '../NavBar/NavBar';
 import Hero from '../Hero/Hero';
 import Form from '../Form/Form';
-// import PhotographerDetails from "../PhotographerDetails/PhotographerDetails"
+import PhotographerDetails from "../PhotographerDetails/PhotographerDetails"
 import Footer from '../Footer/Footer';
 
 function App() {
@@ -71,12 +71,12 @@ function App() {
               <Form submitNewPhotographer={submitNewPhotographer} />
             </Route>
 
-            {/* <Route
+            <Route
               path="/:id"
               render={({ match }) => {
                 return <PhotographerDetails id={match.params.id} />;
               }}
-            /> */}
+            />
           </Switch>
         )}
       </main>

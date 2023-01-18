@@ -1,11 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Hero.css';
-import emptyStar from '../../assets/images/empty-star.png';
-import filledStar from '../../assets/images/filled-star.png';
+import redEmptyStar from '../../assets/images/red-empty-star.png';
+import redFilledStar from '../../assets/images/red-filled-star.png';
 
 function Hero({ recentEntry }) {
-  // const [heroObject, setHeroObject] = useState(recentEntry);
+  let favoriteStar = {};
+
+  if (recentEntry.isFavorite) {
+    favoriteStar = {
+      backgroundColor: 'transparent',
+      backgroundImage: `url(${redFilledStar})`,
+      backgroundSize: 'cover',
+      border: 'none',
+      cursor: 'pointer',
+      height: '100%',
+      inlineSize: '100%',
+    };
+  } else {
+    favoriteStar = {
+      backgroundColor: 'transparent',
+      backgroundImage: `url(${redEmptyStar})`,
+      backgroundSize: 'cover',
+      border: 'none',
+      cursor: 'pointer',
+      height: '100%',
+      inlineSize: '100%',
+    };
+  }
 
   return (
     <div className="hero-component">
@@ -21,7 +43,7 @@ function Hero({ recentEntry }) {
           <div className="hero-name-and-favorites-container">
             <h2>{recentEntry.name}</h2>
             <div className="hero-star-wrapper">
-              <img src={recentEntry.is_favorite ? filledStar : emptyStar}></img>
+              <button style={favoriteStar}/>
             </div>
           </div>
           <div className="hero-background-bio">
