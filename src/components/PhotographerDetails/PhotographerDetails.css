@@ -1,5 +1,5 @@
 .detail-page {
-    width: 100%;
+  width: 100%;
 }
 
 .details-component {
@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 55rem;
+  min-height: 40rem;
   /* outline: 1px solid red; */
   padding: 1rem;
   width: 50%;
@@ -25,8 +25,19 @@
   display: flex;
   min-height: 15rem;
   /* outline: 1px solid teal; */
+  position: relative;
   width: 100%;
 }
+
+.details-star-wrapper {
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    z-index: 1;
+    right: 2rem;
+    top: 1rem;
+
+  }
 
 .name-wrapper {
   align-items: center;
@@ -46,54 +57,73 @@
 }
 
 .background-info {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* outline: 1px solid slateblue; */
+  padding-left: 3rem;
   width: 50%;
 }
 
 .background-info span {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 200;
 }
 
+.bio-and-notes {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* outline: 1px solid red; */
+}
+
+.bio-and-notes h4 {
+  margin-left: 2rem;
+}
+
 .details-page-bio {
-  outline: 1px solid hotpink;
+  text-align: start;
+  text-indent: 2cm;
+  /* outline: 1px solid hotpink; */
+  white-space: pre-line;
 }
 
 /* PHOTOGRAPHER'S GALLERY */
 .details-gallery {
-  border: 1px solid blue;
+  border: 1px solid #010101;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  min-height: 55rem;
+  min-height: 40rem;
   padding: 1rem;
   width: 50%;
 }
 
 .view-gallery {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .view-gallery button {
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .gallery-card-wrapper {
-
 }
 
 .gallery-card-wrapper img {
+  aspect-ratio: 16 / 9;
   inline-size: 100%;
   object-fit: cover;
-  aspect-ratio: 16 / 9;
 }
+
+
+
+
