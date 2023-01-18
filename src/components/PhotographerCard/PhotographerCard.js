@@ -1,25 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './PhotographerCard.css';
-import emptyStar from '../../assets/images/empty-star.png';
-import filledStar from '../../assets/images/filled-star.png';
+import redEmptyStar from '../../assets/images/red-empty-star.png';
+import redFilledStar from '../../assets/images/red-filled-star.png';
 
-function PhotographerCard({ id, isFavorite, photo, name, from, born, death, bio }) {
+function PhotographerCard({id, isFavorite, photo, photoDescription, name, from, born, death, bio}) {
   // console.log(name);
   // console.log(death);
+  let favoriteStar = {};
+
+  if (isFavorite) {
+    favoriteStar = {
+      backgroundColor: 'transparent',
+      backgroundImage: `url(${redFilledStar})`,
+      backgroundSize: 'cover',
+      border: 'none',
+      cursor: 'pointer',
+      height: '100%',
+      inlineSize: '100%',
+    };
+  } else {
+    favoriteStar = {
+      backgroundColor: 'transparent',
+      backgroundImage: `url(${redEmptyStar})`,
+      backgroundSize: 'cover',
+      border: 'none',
+      cursor: 'pointer',
+      height: '100%',
+      inlineSize: '100%',
+    };
+  }
+
+  const handleOnClick = () => {
+    console.log(`CLICKED ON CARD ID# ${id}`)
+  }
+
   return (
-    <NavLink to={`/${id}`}>
+    <Link to={`/${id}`}>
       <section className="photographer-card">
         <div className="card-photo-container">
-          <img src={photo} alt={`Photo taken by ${name}`}></img>
+          <img src={photo} alt={`Photo taken by ${name}`} title={photoDescription}></img>
         </div>
         <div className="card-description-container">
-          <div className='name-and-favorites-container'>
+          <div className="name-and-favorites-container">
             <h3>{name}</h3>
             <div className="card-star-wrapper">
-              <img src={isFavorite ? filledStar : emptyStar}></img>
+              <button style={favoriteStar} />
             </div>
+            {/* 
+            <div className="delete-photo>
+              <button onClick={(event) => deletePhotoEntry(event, index)} />
+            </div>
+            */}
           </div>
           <div className="card-background-bio">
             <span>{from}</span>
@@ -29,7 +62,7 @@ function PhotographerCard({ id, isFavorite, photo, name, from, born, death, bio 
           <p>{bio}</p>
         </div>
       </section>
-    </NavLink>
+    </Link>
   );
 }
 
@@ -39,6 +72,7 @@ PhotographerCard.propTypes = {
   id: PropTypes.number,
   isFavorite: PropTypes.bool,
   photo: PropTypes.string,
+  photoDescription: PropTypes.string,
   name: PropTypes.string,
   from: PropTypes.string,
   born: PropTypes.number,

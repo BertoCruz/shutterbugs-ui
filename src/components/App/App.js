@@ -8,7 +8,7 @@ import Photographers from '../Photographers/Photographers';
 import NavBar from '../NavBar/NavBar';
 import Hero from '../Hero/Hero';
 import Form from '../Form/Form';
-// import PhotographerDetails from "../PhotographerDetails/PhotographerDetails"
+import PhotographerDetails from '../PhotographerDetails/PhotographerDetails';
 import Footer from '../Footer/Footer';
 
 function App() {
@@ -54,10 +54,11 @@ function App() {
       <main>
         {!photographers.length && !error && <DotLoader color="#010101" size={150} />}
         {error && !photographers.length && (
-          <div className='error-handle-animation'>
+          <div className="error-handle-animation">
             <FadeLoader color="#010101" height={20} width={5} />
             ERROR Please refresh the page and try again...
-            <br/>If this persist, please try again later
+            <br />
+            If this persist, please try again later
           </div>
         )}
         {photographers.length > 0 && (
@@ -71,12 +72,12 @@ function App() {
               <Form submitNewPhotographer={submitNewPhotographer} />
             </Route>
 
-            {/* <Route
+            <Route
               path="/:id"
               render={({ match }) => {
                 return <PhotographerDetails id={match.params.id} />;
               }}
-            /> */}
+            />
           </Switch>
         )}
       </main>

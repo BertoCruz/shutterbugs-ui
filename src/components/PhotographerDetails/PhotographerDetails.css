@@ -1,0 +1,129 @@
+.detail-page {
+  width: 100%;
+}
+
+.details-component {
+  display: flex;
+  height: auto;
+  /* outline: 1px solid cornflowerblue; */
+  width: 100%;
+}
+
+/* PHOTOGRAPHER'S WRITTEN DETAILS */
+.details-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 40rem;
+  /* outline: 1px solid red; */
+  padding: 1rem;
+  width: 50%;
+}
+
+.background-container {
+  display: flex;
+  min-height: 15rem;
+  /* outline: 1px solid teal; */
+  position: relative;
+  width: 100%;
+}
+
+.details-star-wrapper {
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    z-index: 1;
+    right: 2rem;
+    top: 1rem;
+
+  }
+
+.name-wrapper {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  /* outline: 1px solid darkcyan; */
+  width: 50%;
+}
+
+.details-container h2 {
+  font-size: 3rem;
+  margin: 0.5rem;
+  /* outline: 1px solid magenta; */
+  text-decoration: underline;
+  /* width: 50%; */
+}
+
+.background-info {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* outline: 1px solid slateblue; */
+  padding-left: 3rem;
+  width: 50%;
+}
+
+.background-info span {
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.bio-and-notes {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* outline: 1px solid red; */
+}
+
+.bio-and-notes h4 {
+  margin-left: 2rem;
+}
+
+.details-page-bio {
+  text-align: start;
+  text-indent: 2cm;
+  /* outline: 1px solid hotpink; */
+  white-space: pre-line;
+}
+
+/* PHOTOGRAPHER'S GALLERY */
+.details-gallery {
+  border: 1px solid #010101;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  min-height: 40rem;
+  padding: 1rem;
+  width: 50%;
+}
+
+.view-gallery {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.view-gallery button {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.gallery-card-wrapper {
+}
+
+.gallery-card-wrapper img {
+  aspect-ratio: 16 / 9;
+  inline-size: 100%;
+  object-fit: cover;
+}
+
+
+
+

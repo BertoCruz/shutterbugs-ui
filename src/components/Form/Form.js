@@ -256,7 +256,7 @@ function Form({submitNewPhotographer}) {
         </div>
       </form>
       <div className="form-self-portrait-wrapper">
-        <img src={randomPortrait.photo} alt={`Self portrait of ${randomPortrait.name}`} />
+        <img src={randomPortrait.photo} alt={`Self portrait of ${randomPortrait.name}`} title={`Self portrait of ${randomPortrait.name}`}/>
       </div>
     </div>
   );

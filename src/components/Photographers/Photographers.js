@@ -12,6 +12,7 @@ function Photographers({ photographers }) {
         id={photographer.id}
         isFavorite={photographer.is_favorite}
         photo={photographer.photos[0].photo_path}
+        photoDescription={photographer.photos[0].description}
         name={photographer.name}
         from={photographer.country_of_origin}
         born={photographer.birth_year}

@@ -24,9 +24,6 @@ function NavBar() {
       </div>
       <nav className="navbar">
         <ul>
-          <NavLink to="/" className="nav-link">
-            <li>Photographers</li>
-          </NavLink>
           <NavLink to="/about" className="nav-link">
             <li>About</li>
           </NavLink>
