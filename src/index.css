@@ -13,7 +13,7 @@
     rgba(139, 167, 32, 0) 50%,
     rgba(220, 216, 206, 1) 90%
   );
-  /* --clr-card-box-shadow: 0 5px 20px -4px rgb(0 0 0 / 15%); */
+  --clr-light-box-shadow: 0 5px 20px -4px rgb(0 0 0 / 15%);
   --clr-card-box-shadow: 0 1px 1px rgba(0, 0, 0, 15%), 0 2px 2px hsl(0deg 0% 0% / 15%),
     0 4px 4px hsl(0deg 0% 0% / 15%), 0 8px 8px hsl(0deg 0% 0% / 15%),
     0 16px 16px hsl(0deg 0% 0% / 15%);

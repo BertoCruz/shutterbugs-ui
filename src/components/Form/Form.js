@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import DotLoader from 'react-spinners/DotLoader';
 import './Form.css';
 import { selfPortraits } from '../../assets/data/self-portraits.js';
 
@@ -12,14 +13,14 @@ function Form() {
     },
   ];
   const [name, setName] = useState('');
-  const [birthYear, setBirthYear] = useState(0);
+  const [birthYear, setBirthYear] = useState('');
   const [deathYear, setDeathYear] = useState('');
   const [countryOrigin, setCountryOrigin] = useState('');
   const [based, setBased] = useState('');
   const [groupAffiliations, setGroupAffiliations] = useState('');
   const [bio, setBio] = useState('');
   const [photos, setPhotos] = useState(inputTags);
-  const [randomPortrait, setRandomPortrait] = useState();
+  const [randomPortrait, setRandomPortrait] = useState({});
 
   const inputsToDisplay = photos.map((photoObj, index) => {
     return (
@@ -71,20 +72,20 @@ function Form() {
     });
   };
 
-  const handlePhotographerSubmit = event => {
+  const handlePhotographerSubmit = (event) => {
     event.preventDefault();
-  }
+  };
 
   const clearInput = () => {
-    setName("");
+    setName('');
     setBirthYear(0);
-    setDeathYear("");
-    setCountryOrigin("");
-    setBased("");
-    setGroupAffiliations("");
-    setBio("");
+    setDeathYear('');
+    setCountryOrigin('');
+    setBased('');
+    setGroupAffiliations('');
+    setBio('');
     setPhotos(inputTags);
-  }
+  };
 
   useEffect(() => {
     console.log(selfPortraits);
@@ -96,62 +97,72 @@ function Form() {
 
   return (
     <div className="form-container">
+      {/* {!photographers.length && !error && <DotLoader color="#010101" size={150} />} */}
+
       <form>
         <h2>Photographer Entry</h2>
-        <input 
-          name="name"
-          onChange={event => setName(event.target.value)}
-          placeholder="Name..."
-          type="text"
-          value={name}
-        />
-        <input 
-          name="birthYear"
-          onChange={event => setBirthYear(event.target.value)}
-          placeholder="Birth Year..."
-          type="number"
-          value={birthYear}
-        />
-        <input 
-          name="deathYear"
-          onChange={event => setDeathYear(event.target.value)}
-          placeholder="Year of death, or type 'alive' if still living"
-          type="text"
-          value={deathYear}
-        />
-        <input 
-          name="countryOrigin"
-          onChange={event => setCountryOrigin(event.target.value)}
-          placeholder="Country of origin..."
-          type="text"
-          value={countryOrigin}
-        />
-        <input 
-          name="based"
-          onChange={event => setBased(event.target.value)}
-          placeholder="What country are they based out of?"
-          type="text"
-          value={based}
-        />
-        <input 
+        <div className="form-row-1">
+          <input
+            name="name"
+            onChange={(event) => setName(event.target.value)}
+            placeholder="Name..."
+            type="text"
+            value={name}
+          />
+          <input
+            name="birthYear"
+            onChange={(event) => setBirthYear(event.target.value)}
+            placeholder="Birth Year..."
+            type="text"
+            value={birthYear}
+          />
+          <input
+            name="deathYear"
+            onChange={(event) => setDeathYear(event.target.value)}
+            placeholder="Year of death, or type 'alive'"
+            type="text"
+            value={deathYear}
+          />
+        </div>
+        <div className='form-row-2'>
+          <input
+            name="countryOrigin"
+            onChange={(event) => setCountryOrigin(event.target.value)}
+            placeholder="Country of origin..."
+            type="text"
+            value={countryOrigin}
+          />
+          <input
+            name="based"
+            onChange={(event) => setBased(event.target.value)}
+            placeholder="What country are they based out of?"
+            type="text"
+            value={based}
+          />
+        </div>
+        <input
           name="groupAffiliations"
-          onChange={event => setGroupAffiliations(event.target.value)}
+          onChange={(event) => setGroupAffiliations(event.target.value)}
           placeholder="Group affiliations"
           type="text"
           value={groupAffiliations}
         />
-        <textarea 
-          name="bio" 
-          onChange={event => setBio(event.target.value)}
+        <textarea
+          className="form-textarea-bio"
+          name="bio"
+          onChange={(event) => setBio(event.target.value)}
           placeholder="Write photographers' bio here..."
           type="text"
           value={bio}
         />
-        <button onClick={() => addNewInput()}>Add another photo</button>
+        <button className='add-new-photo-btn' onClick={() => addNewInput()}>Add another photo</button>
         {inputsToDisplay}
+        <div className='submit-button-container'>
+          <button className='submit-button' onClick={event => handlePhotographerSubmit(event)}>Submit</button>
+        </div>
       </form>
       <div className="form-self-portrait-wrapper">
-        {/* <img src={randomPortrait.photo} alt={`Self portrait of ${randomPortrait.name}`}/> */}
+        <img src={randomPortrait.photo} alt={`Self portrait of ${randomPortrait.name}`} />
       </div>
     </div>
   );
