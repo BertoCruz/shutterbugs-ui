@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getPhotographer } from '../../api-calls';
+import { getPhotographer, updatePhotographer } from '../../api-calls';
 import './PhotographerDetails.css';
 import redEmptyStar from '../../assets/images/red-empty-star.png';
 import redFilledStar from '../../assets/images/red-filled-star.png';
@@ -25,47 +25,25 @@ function PhotographerDetails({ id }) {
     fetchPhotographer();
   }, []);
 
-  let favoriteStar = {};
-
-  const favoritedStar = {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(${redFilledStar})`,
-    backgroundSize: 'cover',
-    border: 'none',
-    cursor: 'pointer',
-    height: '100%',
-    inlineSize: '100%',
-  };
-
-  const unFavoritedStar = {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(${redEmptyStar})`,
-    backgroundSize: 'cover',
-    border: 'none',
-    cursor: 'pointer',
-    height: '100%',
-    inlineSize: '100%',
-  };
-
   const handleOnClick = event => {
     event.preventDefault();
-
-    if (photographer.is_favorite) {
-        setPhotographer((prevState) => {
-            const favoriteChange = { ...prevState};
-            favoriteChange.is_favorite = false;
-            // setPhotographers all the way back to App
-            return favoriteChange;
-        })
-    } else {
-        setPhotographer((prevState) => {
-            const favoriteChange = { ...prevState};
-            favoriteChange.is_favorite = true;
-            return favoriteChange;
-        })
-    }
+    
+    setPhotographer((prevState) => {
+        return { ...prevState, is_favorite: !prevState.is_favorite};
+    })
+    updateThisPhotographer();
   }
 
+  const updateThisPhotographer = async () => {
+    try {
+      const data = await updatePhotographer(photographer);
+      console.log(data);
+      //send this data back to App;
+    } catch (err) {
+      setError(err);
+    }
+  }
+  console.log(photographer)
   return (
     <div className="detail-page">
       {photographer && (
@@ -73,7 +51,7 @@ function PhotographerDetails({ id }) {
           <section className="details-container">
             <div className="background-container">
               <div className="details-star-wrapper">
-                <input type="button" style={photographer.is_favorite ? favoritedStar : unFavoritedStar} onClick={event => handleOnClick(event)} />
+                <input type="button" className={photographer.is_favorite ? "favorited-star" : "unfavorited-star"} onClick={event => handleOnClick(event)} />
               </div>
               <div className="name-wrapper">
                 <h2>{photographer.name}</h2>

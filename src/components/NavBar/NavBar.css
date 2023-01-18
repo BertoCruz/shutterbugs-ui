@@ -16,7 +16,11 @@
     -webkit-text-stroke: 1px;
   }
 
-.nav-link {
+.logo-nav-link {
+  color: inherit;
+  text-decoration: none;
+}
+.about-nav-link {
   color: inherit;
   text-decoration: none;
 }

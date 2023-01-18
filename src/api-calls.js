@@ -1,5 +1,5 @@
 export const getAllPhotographers = async () => {
-  const url = `http://localhost:3001/api/v1/photographers`;
+  const url = `http://localhost:8080/api/v1/photographers`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Unable to retrieve photographers');
@@ -10,7 +10,7 @@ export const getAllPhotographers = async () => {
 };
 
 export const getPhotographer = async (userId) => {
-  const url = `http://localhost:3001/api/v1/photographers/${userId}`;
+  const url = `http://localhost:8080/api/v1/photographers/${userId}`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Unable to locate photographer id# ${userId}`);
@@ -21,7 +21,7 @@ export const getPhotographer = async (userId) => {
 };
 
 export const sendNewPhotographer = async (submittedPhotographer) => {
-  const url = `http://localhost:3001/api/v1/photographers`;
+  const url = `http://localhost:8080/api/v1/photographers`;
   const options = {
     method: 'POST',
     body: JSON.stringify(submittedPhotographer),
@@ -34,7 +34,27 @@ export const sendNewPhotographer = async (submittedPhotographer) => {
 
   if (!response.ok) {
     const { message: errorMessage } = await response.json();
-    throw new Error(errorMessage);
+    throw new Error(`Unable to add new user`);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const updatePhotographer = async (userId, submittedPhotographer) => {
+  const url = `http://localhost:8080/api/v1/photographers/${userId}`;
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify(submittedPhotographer),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const response = await fetch(url, options);
+
+  if (!response.ok) {
+    throw new Error(`Unable to update user id# ${userId}`);
   }
 
   const data = await response.json();
@@ -42,7 +62,7 @@ export const sendNewPhotographer = async (submittedPhotographer) => {
 };
 
 export const deletePhotographer = async (userId) => {
-  const url = `http://localhost:3001/api/v1/photographers/${userId}`;
+  const url = `http://localhost:8080/api/v1/photographers/${userId}`;
   const options = {
     method: 'DELETE',
   };
