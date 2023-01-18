@@ -75,26 +75,7 @@ function App() {
             <Route
               path="/:id"
               render={({ match }) => {
-                const shallow = photographers.splice()
-                const singlePhotographer = shallow.find(
-                  (item) => item.id === match.params.id
-                );
-                console.log("HURRRRRRR", singlePhotographer)
-                // return <PhotographerDetails id={match.params.id} />;
-                return (
-                  <PhotographerDetails
-                    id={singlePhotographer.id}
-                    name={singlePhotographer.name}
-                    isFavorite={singlePhotographer.is_favorite}
-                    birthYear={singlePhotographer.birth_year}
-                    deathYear={singlePhotographer.death_year}
-                    countryOrigin={singlePhotographer.country_of_origin}
-                    based={singlePhotographer.based}
-                    groupAffiliations={singlePhotographer.group_affiliations}
-                    bio={singlePhotographer.bio}
-                    userNotes={singlePhotographer.user_notes}
-                  />
-                );
+                return <PhotographerDetails id={match.params.id} />;
               }}
             />
           </Switch>
