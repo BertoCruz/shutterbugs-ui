@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DotLoader from 'react-spinners/DotLoader';
 import './Form.css';
+import redXIcon from '../../assets/images/red-x-icon.png';
 import { selfPortraits } from '../../assets/data/self-portraits.js';
 
 console.log(selfPortraits);
@@ -24,7 +25,10 @@ function Form() {
 
   const inputsToDisplay = photos.map((photoObj, index) => {
     return (
-      <div className="form-photo-inputs" key={index}>
+      <div className="form-photo-inputs" id={index} key={index}>
+        <div className={photos.length > 1 ? ("delete-photo") : ("delete-photo hidden")}>
+          <button onClick={event => deletePhotoEntry(event, index)}/>
+        </div>
         <input
           className="form-photo-url"
           id={index}
@@ -60,7 +64,8 @@ function Form() {
     });
   };
 
-  const addNewInput = () => {
+  const addNewInput = (event) => {
+    event.preventDefault();
     setPhotos((prevState) => {
       return [
         ...prevState,
@@ -71,9 +76,19 @@ function Form() {
       ];
     });
   };
+  
+  const deletePhotoEntry = (event, id) => {
+    event.preventDefault();
+    setPhotos((prevState) => {
+      const newPhotos = prevState.filter((p, i) => i !== id)
+      console.log("OVERRRR HURRR----", newPhotos);
+      return newPhotos
+    })
+  }
 
   const handlePhotographerSubmit = (event) => {
     event.preventDefault();
+    console.log('click');
   };
 
   const clearInput = () => {
@@ -124,7 +139,7 @@ function Form() {
             value={deathYear}
           />
         </div>
-        <div className='form-row-2'>
+        <div className="form-row-2">
           <input
             name="countryOrigin"
             onChange={(event) => setCountryOrigin(event.target.value)}
@@ -155,10 +170,14 @@ function Form() {
           type="text"
           value={bio}
         />
-        <button className='add-new-photo-btn' onClick={() => addNewInput()}>Add another photo</button>
+        <button className="add-new-photo-btn" onClick={(event) => addNewInput(event)}>
+          Add another photo
+        </button>
         {inputsToDisplay}
-        <div className='submit-button-container'>
-          <button className='submit-button' onClick={event => handlePhotographerSubmit(event)}>Submit</button>
+        <div className="submit-button-container">
+          <button className="submit-button" onClick={(event) => handlePhotographerSubmit(event)}>
+            Submit
+          </button>
         </div>
       </form>
       <div className="form-self-portrait-wrapper">
