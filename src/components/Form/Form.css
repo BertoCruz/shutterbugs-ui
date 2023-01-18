@@ -30,6 +30,11 @@ form h2 {
   width: 100%;
 }
 
+.form-directions {
+    font-size: .75rem;
+    margin: 0 0 .5rem 0;
+}
+
 form input {
   /* border: 1px solid #010101; */
   /* border: none; */
@@ -126,7 +131,6 @@ input[name='based'] {
     align-items:flex-end;
   display: flex;
   justify-content:space-between;
-  /* outline: 1px solid red; */
   width: 100%;
 }
 

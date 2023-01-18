@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from "prop-types"
 import DotLoader from 'react-spinners/DotLoader';
 import './Form.css';
 import redXIcon from '../../assets/images/red-x-icon.png';
 import { selfPortraits } from '../../assets/data/self-portraits.js';
 
-console.log(selfPortraits);
-
-function Form() {
+function Form({submitNewPhotographer}) {
   const inputTags = [
     {
       photo_path: '',
@@ -24,6 +23,7 @@ function Form() {
   const [randomPortrait, setRandomPortrait] = useState({});
   const [required, setRequired] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
   const inputsToDisplay = photos.map((photoObj, index) => {
     return (
@@ -43,10 +43,8 @@ function Form() {
           placeholder="Paste image URL"
           type="text"
           value={photos[index]['photo_path']}
-          // value={photoObj['photo_path']}
         />
         <textarea
-          // className="form-photo-description"
           className={
             required && photos[index].description.length === 0 && photos.length <= 1
               ? 'form-photo-description requiredField'
@@ -58,7 +56,6 @@ function Form() {
           placeholder="Write the title description, including name and date, of this photo here..."
           type="text"
           value={photos[index].description}
-          // value={photoObj.description}
         />
       </div>
     );
@@ -94,12 +91,11 @@ function Form() {
     event.preventDefault();
     setPhotos((prevState) => {
       const newPhotos = prevState.filter((p, i) => i !== id);
-      // console.log('OVERRRR HURRR----', newPhotos);
       return newPhotos;
     });
   };
 
-  const formValidate = () => {
+  const validateForm = () => {
     if (
       !name ||
       !birthYear ||
@@ -116,31 +112,47 @@ function Form() {
     return true;
   };
 
-  const handlePhotographerSubmit = (event) => {
+  const handlePhotographerSubmit = async (event) => {
     event.preventDefault();
-    const validated = formValidate();
+    const validated = validateForm();
 
     if (validated) {
-      console.log('click');
-      setSubmitted(true);
+      const newPhotographer = {
+        name: name,
+        birth_year: birthYear,
+        death_year: deathYear,
+        country_of_origin: countryOrigin,
+        based: based,
+        group_affiliations: groupAffiliations,
+        bio: bio,
+        photos: photos
+      }
+
+      const verdict = await submitNewPhotographer(newPhotographer);
+      if (verdict) {
+        setRequired(false);
+        setSubmitted(true);
+        setTimeout(() => clearInputs(), 3000);
+      } else { setError(true) }
     } else {
       setRequired(true);
     }
   };
 
-  const clearInput = () => {
+  const clearInputs = () => {
     setName('');
-    setBirthYear(0);
+    setBirthYear('');
     setDeathYear('');
     setCountryOrigin('');
     setBased('');
     setGroupAffiliations('');
     setBio('');
     setPhotos(inputTags);
+    setRequired(false);
+    setSubmitted(false);
   };
 
   useEffect(() => {
-    console.log(selfPortraits);
     const index = Math.floor(Math.random() * selfPortraits.length);
     const randomPortrait = selfPortraits[index];
 
@@ -149,10 +161,13 @@ function Form() {
 
   return (
     <div className="form-container">
-      {/* {!photographers.length && !error && <DotLoader color="#010101" size={150} />} */}
-
       <form>
         <h2>Photographer Entry</h2>
+        <p className="form-directions">
+          Submit a new photographer by filling out the fields below. Note, the black square field is
+          where you'll submit photographs taken by *this* photographer. Add as many as you like, by
+          clicking the 'Add another photo' button
+        </p>
         <div className="form-row-1">
           <input
             className={required && name.length === 0 ? 'requiredField' : 'border-reset'}
@@ -234,6 +249,7 @@ function Form() {
           ) : (
             <span />
           )}
+          {error ? (<span className='error-span'>⚠️ Something went wrong, refresh and try again</span>) : (<span />)}
           <button className="submit-button" onClick={(event) => handlePhotographerSubmit(event)}>
             Submit
           </button>
@@ -247,3 +263,7 @@ function Form() {
 }
 
 export default Form;
+
+Form.propTypes = {
+  submitNewPhotographer: PropTypes.func
+}
